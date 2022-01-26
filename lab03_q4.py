@@ -37,7 +37,7 @@ def alu (a, b, op):
     # Operation 1: a xnor b
     op1 = # < add your code here >
     # Operation 2: a + b
-    op2_c, op2_s = half_adder(a, b)
+    op2_s, op2_c = half_adder(a, b)
     # Based on the given "op", return the proper signals as outputs
     alu_r = pyrtl.WireVector(bitwidth=1)
     alu_cout = pyrtl.WireVector(bitwidth=1)
