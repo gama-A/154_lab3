@@ -8,15 +8,24 @@ import pyrtl
 
 # Declare two 1-bit data inputs: a, b
 # < add your code here >
+a = pyrtl.Input(bitwidth=1, name='a')
+b = pyrtl.Input(bitwidth=1, name='b')
 
 # Declare one 1-bit control input: s
 # < add your code here >
+s = pyrtl.Input(bitwidth=1, name='s')
 
 # Declare one 1-bit output: o_wg
 # < add your code here >
+o_wg = pyrtl.Output(bitwidth=1, name='o_wg')
 
 # 2:1 MUX implementation using only AND, OR, and NOT gates
 # < add your code here > 
+with pyrtl.conditional_assignment:
+    with s==0:
+        o_wg |= a
+    with s==1:
+        o_wg |= b    
 
 # Simulate and test the design for 8 clock cycles using random inputs
 sim_trace = pyrtl.SimulationTrace()
