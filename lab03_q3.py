@@ -45,12 +45,12 @@ import random
 for cycle in range(16):
     # Call "sim.step" to simulate each clock cycle of the design
     sim.step({
-        'a': random.choice([0, 1]),
-        'b': random.choice([0, 1]),
-        'c': random.choice([0, 1]),
-        'd': random.choice([0, 1]),
-        'e': random.choice([0, 1]),
-        's_0': random.choice([0, 1])
+        'a': random.choice([0, 7]),
+        'b': random.choice([0, 7]),
+        'c': random.choice([0, 7]),
+        'd': random.choice([0, 7]),
+        'e': random.choice([0, 7]),
+        's_0': random.choice([0, 4])
         })
 
 # Print the trace results to the screen.
