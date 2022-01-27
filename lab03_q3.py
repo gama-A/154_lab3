@@ -16,41 +16,24 @@ d = pyrtl.Input(bitwidth=3, name='d')
 e = pyrtl.Input(bitwidth=3, name='e')
 
 # Declare control inputs
-s_0 = pyrtl.Input(bitwidth=1, name='s_0')
-s_1 = pyrtl.Input(bitwidth=1, name='s_1')
-s_2 = pyrtl.Input(bitwidth=1, name='s_2')
+s = pyrtl.Input(bitwidth=3, name='s')
 
 # Declare outputs 
 # < add your code here >
-mux_1 = pyrtl.WireVector(bitwidth=3, name='abMUX')
-mux_2 = pyrtl.WireVector(bitwidth=3, name='cdMUX')
-mux_3 = pyrtl.WireVector(bitwidth=3, name='mux_res')
 o = pyrtl.Output(bitwidth=3, name='o')
 
 # Describe your 5:1 MUX implementation
 # < add your code here >
 with pyrtl.conditional_assignment:
-    with s_0==0:
-        mux_1 |= a
-    with s_0==1:
-        mux_1 |= b
-
-with pyrtl.conditional_assignment:
-    with s_0==0:
-        mux_2 |= c
-    with s_0==1:
-        mux_2 |= d
-
-with pyrtl.conditional_assignment:
-    with s_1==0:
-        mux_3 |= mux_1
-    with s_1==1:
-        mux_3 |= mux_2
-
-with pyrtl.conditional_assignment:
-    with s_2==0:
-        o |= mux_3
-    with s_2==1:
+    with s==0:
+        o |= a
+    with s==1:
+        o |= b
+    with s==10:
+        o |= c
+    with s==11:
+        o |= d
+    with s==100:
         o |= e
 
 
@@ -68,11 +51,9 @@ for cycle in range(16):
         'c': random.choice([0, 7]),
         'd': random.choice([0, 7]),
         'e': random.choice([0, 7]),
-        's_0': random.choice([0, 1]),
-        's_1': random.choice([0, 1]),
-        's_2': random.choice([0, 1])
+        's': random.choice([0, 4])
         })
 
 # Print the trace results to the screen.
-print('--- 3-bit 5:1 MUX Simulation ---')
+print('--- 3-bit 5:1 MUX Simulation -- Built using PyRTL\'s conditional statement---')
 sim_trace.render_trace()
