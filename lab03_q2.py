@@ -21,11 +21,12 @@ o_wg = pyrtl.Output(bitwidth=1, name='o_wg')
 
 # 2:1 MUX implementation using only AND, OR, and NOT gates
 # < add your code here > 
-with pyrtl.conditional_assignment:
-    with s==0:
-        o_wg |= a
-    with s==1:
-        o_wg |= b    
+a_notS = pyrtl.WireVector(bitwidth=1, name='a&!s')
+b_s = pyrtl.WireVector(bitwidth=1, name='b&s')
+
+a_notS <<= a & ~(s)
+b_s <<= b & s
+o_wg <<= a_notS | b_s
 
 # Simulate and test the design for 8 clock cycles using random inputs
 sim_trace = pyrtl.SimulationTrace()
