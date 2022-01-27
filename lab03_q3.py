@@ -29,11 +29,11 @@ with pyrtl.conditional_assignment:
         o |= a
     with s==1:
         o |= b
-    with s==10:
+    with s==2:
         o |= c
-    with s==11:
+    with s==3:
         o |= d
-    with s==100:
+    with s==4:
         o |= e
 
 
