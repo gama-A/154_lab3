@@ -1,7 +1,7 @@
 import pyrtl
 
-A = pyrtl.Input(bitwidth=32, name='a')
-B = pyrtl.Input(bitwidth=32, name='b')
+A = pyrtl.Input(bitwidth=32, name='A')
+B = pyrtl.Input(bitwidth=32, name='B')
 
 regA = pyrtl.Register(bitwidth=32, name='regA')
 regResult = pyrtl.Register(bitwidth=32, name='regResult')
@@ -27,8 +27,8 @@ sim = pyrtl.Simulation(tracer=sim_trace)
 
 for cycle in range(16):
     sim.step({
-        'a': 1,
-        'b': 2,
+        'A': 1,
+        'B': 2,
         'count': cycle
     })
 sim_trace.render_trace()
